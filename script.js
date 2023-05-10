@@ -33,6 +33,12 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
       var years = moment(endDate).diff(startDate, "seconds",false)
         result += years + '秒';
     }
+    if (units === 'week') {
+      var diff = moment.duration(endDate.diff(startDate)); // 获取两个日期之间的差值，返回一个duration对象
+      var weeks = diff.weeks(); // 获取周数，返回一个整数
+      var days = diff.days()-(diff.weeks()*7); // 获取天数，返回一个整数，不包括周数的部分
+      result += weeks + "周"+ days +"天"; // 输出 “4 weeks and 2 days”
+    }
     var resultElement = document.getElementById('result');
     resultElement.textContent = result.trim();
     });
