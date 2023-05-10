@@ -1,5 +1,5 @@
 document.getElementById('calculateBtn').addEventListener('click', function() {
-  // var moment = require('moment');
+  // var moment = require('moment');并不需要require或import？
   var startDate = moment(document.getElementById('startDate').value);
   var endDate = moment(document.getElementById('endDate').value);
   var units = document.getElementById('units').value;
