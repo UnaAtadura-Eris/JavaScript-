@@ -14,24 +14,24 @@ document.getElementById('calculateBtn').addEventListener('click', function() {
         result += years + '年';
     }
     if (units === 'month') {
-      var years = moment(endDate).diff(startDate, "months",false)
-        result += years + '月';
+      var months = moment(endDate).diff(startDate, "months",false)
+        result += months + '月';
     }
     if (units === 'day') {
-      var years = moment(endDate).diff(startDate, "days",false)
-        result += years + '日';
+      var days = moment(endDate).diff(startDate, "days",false)
+        result += days + '日';
     }
     if (units === 'hour') {
-      var years = moment(endDate).diff(startDate, "hours",false)
-        result += years + '时';
+      var hours = moment(endDate).diff(startDate, "hours",false)
+        result += hours + '时';
     }
     if (units === 'minute') {
-      var years = moment(endDate).diff(startDate, "minutes",false)
-        result += years + '分';
+      var minutes = moment(endDate).diff(startDate, "minutes",false)
+        result += minutes + '分';
     }
     if (units === 'second') {
-      var years = moment(endDate).diff(startDate, "seconds",false)
-        result += years + '秒';
+      var seconds = moment(endDate).diff(startDate, "seconds",false)
+        result += seconds + '秒';
     }
     if (units === 'week') {
       var diff = moment.duration(endDate.diff(startDate)); // 获取两个日期之间的差值，返回一个duration对象
