@@ -1,35 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Relative Time Calculator</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <h1>Relative Time Calculator</h1>
-  <div>
-    <label for="startDate">Start Date:</label>
-    <input type="datetime-local" id="startDate" value="">
-  </div>
-  <div>
-    <label for="endDate">End Date:</label>
-    <input type="datetime-local" id="endDate" value="">
-  </div>
-  <div>
-    <label for="units">Output Units:</label>
-    <select id="units">
-      <option value="all">All</option>
-      <option value="year">Year</option>
-      <option value="month">Month</option>
-      <option value="day">Day</option>
-      <option value="hour">Hour</option>
-      <option value="minute">Minute</option>
-      <option value="second">Second</option>
-    </select>
-  </div>
-  <button id="calculateBtn">Calculate</button>
-  <div id="result"></div>
-  <script src="node_modules/moment/min/moment.min.js"></script>//以项目文件出发，一直找到要用到的js文件，引入moment.min.js文件是为了使用优化过的、体积更小的Moment.js库版本，以提供更好的性能和用户体验。
-  <script src="script.js"></script>
-</body>
-</html>
+document.getElementById('calculateBtn').addEventListener('click', function() {
+  // var moment = require('moment');
+  var startDate = moment(document.getElementById('startDate').value);
+  var endDate = moment(document.getElementById('endDate').value);
+  var units = document.getElementById('units').value;
+  var duration = moment.duration(endDate.diff(startDate));
+  var result = '';
+ if (units === 'all' ) {
+        result += duration.years() +'年'+duration.months()+'月'+duration.days()+'日'+duration.hours()+'时'+duration.minutes()+'分'+duration.seconds()+'秒';
+      }
+    
+   if (units === 'year') {
+      var years = moment(endDate).diff(startDate, "years",false)
+        result += years + '年';
+    }
+    if (units === 'month') {
+      var months = moment(endDate).diff(startDate, "months",false)
+        result += months + '月';
+    }
+    if (units === 'day') {
+      var days = moment(endDate).diff(startDate, "days",false)
+        result += days + '日';
+    }
+    if (units === 'hour') {
+      var hours = moment(endDate).diff(startDate, "hours",false)
+        result += hours + '时';
+    }
+    if (units === 'minute') {
+      var minutes = moment(endDate).diff(startDate, "minutes",false)
+        result += minutes + '分';
+    }
+    if (units === 'second') {
+      var seconds = moment(endDate).diff(startDate, "seconds",false)
+        result += seconds + '秒';
+    }
+    if (units === 'week') {
+      var diff = moment.duration(endDate.diff(startDate)); // 获取两个日期之间的差值，返回一个duration对象
+      var weeks = diff.weeks(); // 获取周数，返回一个整数
+      var days = diff.days()-(diff.weeks()*7); // 获取天数，返回一个整数，不包括周数的部分
+      result += weeks + "周"+ days +"天"; // 输出 “4 weeks and 2 days”
+    }
+    var resultElement = document.getElementById('result');
+    resultElement.textContent = result.trim();
+    });
+
+   
+  
+    // if (units === 'all' || units === 'month') {
+    //   var months = duration.months();
+    //   if (months >= 0) {
+    //     result += months +  ' 月 ';
+    //   }
+    // }
+  
+    // if (units === 'all' || units === 'day') {
+    //   var days = duration.days();
+    //   if (days >= 0) {
+    //     result += days + ' 日 ';
+    //   }
+    // }
+  
+    // if (units === 'all' || units === 'hour') {
+    //   var hours = duration.hours();
+    //   if (hours >= 0) {
+    //     result += hours + ' 时 ';
+    //   }
+    // }
+  
+    // if (units === 'all' || units === 'minute') {
+    //   var minutes =duration.minutes();
+    //   if (minutes >= 0) {
+    //   result += minutes + ' 分 ';
+    //   }
+    //   }
+      
+    //   if (units === 'all' || units === 'second') {
+    //   var seconds = duration.seconds();
+    //   if (seconds >= 0) {
+    //   result += seconds + ' 秒 ';
+    //   }
+    //   }
