@@ -10,10 +10,13 @@
   <div>
     <label for="startDate">起始日期：</label>
     <input type="datetime-local" id="startDate" value="">
-  </div>
+    <label for="seconds"></label>
+    <input type="number" id="seconds" min="0" max="59" step="1" value="">
   <div>
     <label for="endDate">结束日期：</label>
     <input type="datetime-local" id="endDate" value="">
+    <label for="seconds"></label>
+    <input type="number" id="seconds" min="0" max="59" step="1" value="">
   </div>
   <div>
     <label for="units">输出单位：</label>
@@ -31,34 +34,31 @@
   <button id="calculateBtn">计算</button>
   <div id="result"></div>
   <script src="./node_modules/moment/min/moment.min.js"></script>
-  <script src="script.js"></script>
+  <!-- <script src="script.js"></script> -->
   <script>
     // 设置日期输入框的初始默认值为当前时间
     var startDateInput = document.getElementById('startDate');
     var endDateInput = document.getElementById('endDate');
-
+    var secondsInput = document.getElementById('seconds');
     var now = new Date();
     var year = now.getFullYear();
     var month = (now.getMonth() + 1).toString().padStart(2, '0');
     var day = now.getDate().toString().padStart(2, '0');
     var hours = now.getHours().toString().padStart(2, '0');
     var minutes = now.getMinutes().toString().padStart(2, '0');
-/*
-在JavaScript的Date对象中，月份的取值范围是从0到11，其中0代表一月，1代表二月，依此类推，11代表十二月。而通常我们习惯使用的是1到12表示月份，因此需要将获取到的月份值加1。
-所以 (now.getMonth() + 1) 这部分代码是为了将获取到的月份值加1，使其从1到12表示月份。
-接下来是 .toString().padStart(2, '0') 这部分代码的解释：
-.toString()：将数字转换为字符串。在这里是将月份的数值转换为字符串，以便后续使用字符串的相关方法。
-.padStart(2, '0')：在字符串的前面添加字符，使其达到指定的长度。在这里是为了确保月份的字符串表示始终是两位数，例如将'5'转换为'05'，将'12'保持为'12'。
-使用 .padStart(2, '0') 是为了在月份值为个位数时，在其前面添加一个零，以保持日期字符串的统一格式。
-综合起来，(now.getMonth() + 1).toString().padStart(2, '0') 这部分代码的目的是获取当前月份，并将其转换为两位数的字符串表示，例如将4转换为'04'，将11保持为'11'。这样确保了日期字符串的正确格式。
-年份的取值是一个四位数，例如2023年，而不是01到99的两位数。由于年份始终是一个四位数，所以无需将其转换为字符串或进行填充操作。
-在JavaScript中，getFullYear()方法返回的是一个表示四位年份的数值，不需要额外的转换或填充操作。因此，在获取当前年份时，不需要像月份那样使用 .toString().padStart(2, '0') 进行转换和填充。
-*/
-    
+    var second = now.getSeconds().toString().padStart(2, '0');
     var defaultDateTime = year + '-' + month + '-' + day + 'T' + hours + ':' + minutes;
     startDateInput.value = defaultDateTime;
     endDateInput.value = defaultDateTime;
+    secondsInput.value= second
+    // var startDate = moment(document.getElementById('startDate').value);
+    // console.log("startDate")
   </script>
+  <h1>地球online累积在线时间</h1>
+   <!-- 定义一个显示元素，给它一个 id -->
+  <div id="display"></div>
+  <!-- 引入 JavaScript 代码 如果把函数写在一个文件，那要在html的最后引用-->
+  <script src="./node_modules/moment/min/moment.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
-
