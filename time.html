@@ -7,17 +7,17 @@
 </head>
 <body>
   <h1>相对时间计算器</h1>
-  <div>
-    <label for="startDate">起始日期：</label>
-    <input type="datetime-local" id="startDate" value="">
-    <label for="seconds"></label>
-    <input type="number" id="seconds" min="0" max="59" step="1" value="">
-  <div>
-    <label for="endDate">结束日期：</label>
-    <input type="datetime-local" id="endDate" value="">
-    <label for="seconds"></label>
-    <input type="number" id="seconds" min="0" max="59" step="1" value="">
-  </div>
+  <label for="startDate">起始日期时间：</label>
+  <input type="date" id="startDate" name="startDate">
+
+  <label for="startTime"></label>
+  <input type="time" id="startTime" name="startTime">
+  <br>
+  <label for="endDate">结束日期时间：</label>
+  <input type="date" id="endDate" name="endDate">
+
+  <label for="endTime"></label>
+  <input type="time" id="endTime" name="endTime">
   <div>
     <label for="units">输出单位：</label>
     <select id="units">
@@ -36,23 +36,20 @@
   <script src="./node_modules/moment/min/moment.min.js"></script>
   <!-- <script src="script.js"></script> -->
   <script>
-    // 设置日期输入框的初始默认值为当前时间
-    var startDateInput = document.getElementById('startDate');
-    var endDateInput = document.getElementById('endDate');
-    var secondsInput = document.getElementById('seconds');
-    var now = new Date();
-    var year = now.getFullYear();
-    var month = (now.getMonth() + 1).toString().padStart(2, '0');
-    var day = now.getDate().toString().padStart(2, '0');
-    var hours = now.getHours().toString().padStart(2, '0');
-    var minutes = now.getMinutes().toString().padStart(2, '0');
-    var second = now.getSeconds().toString().padStart(2, '0');
-    var defaultDateTime = year + '-' + month + '-' + day + 'T' + hours + ':' + minutes;
-    startDateInput.value = defaultDateTime;
-    endDateInput.value = defaultDateTime;
-    secondsInput.value= second
-    // var startDate = moment(document.getElementById('startDate').value);
-    // console.log("startDate")
+    // 获取当前日期和时间
+    var now = moment();
+    
+    // 获取日期和时间的格式化字符串
+    var formattedDate = now.format('YYYY-MM-DD');
+    var formattedTime = now.format('HH:mm:ss');
+    
+    // 设置起始日期和时间的初始值
+    document.getElementById('startDate').value = formattedDate;
+    document.getElementById('startTime').value = formattedTime;
+
+    // 设置结束日期和时间的初始值
+    document.getElementById('endDate').value = formattedDate;
+    document.getElementById('endTime').value = formattedTime;
   </script>
   <h1>地球online累积在线时间</h1>
    <!-- 定义一个显示元素，给它一个 id -->
