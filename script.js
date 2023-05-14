@@ -1,21 +1,22 @@
+
+
 document.getElementById('calculateBtn').addEventListener('click', function () {
   // var moment = require('moment');
-  var startDate = moment(document.getElementById('startDate').value);
+  var startDate = moment(document.getElementById('startDate').value+" "+document.getElementById('startTime').value);
+  // var startTimeInput = document.getElementById('startTime'); // 获取输入框元素
+  // var startTimeValue = startTimeInput.value; // 获取输入框的值
+  // startDate.set('hour', startTimeValue.split(':')[0]); // 设置小时
+  // startDate.set('minute', startTimeValue.split(':')[1]); // 设置分钟
+  // startDate.set('second', startTimeValue.split(':')[2]); // 设置秒
 
-  var startTimeInput = document.getElementById('startTime'); // 获取输入框元素
-  var startTimeValue = startTimeInput.value; // 获取输入框的值
-  startDate.set('hour', startTimeValue.split(':')[0]); // 设置小时
-  startDate.set('minute', startTimeValue.split(':')[1]); // 设置分钟
-  startDate.set('second', startTimeValue.split(':')[2]); // 设置秒
 
+  var endDate = moment(document.getElementById('endDate').value+" "+document.getElementById('endTime').value);
 
-  var endDate = moment(document.getElementById('endDate').value);
-
-  var endTimeInput = document.getElementById('endTime'); // 获取输入框元素
-  var endTimeValue = endTimeInput.value; // 获取输入框的值
-  endDate.set('hour', endTimeValue.split(':')[0]); // 设置小时
-  endDate.set('minute', endTimeValue.split(':')[1]); // 设置分钟
-  endDate.set('second', endTimeValue.split(':')[2]); // 设置秒
+  // var endTimeInput = document.getElementById('endTime'); // 获取输入框元素
+  // var endTimeValue = endTimeInput.value; // 获取输入框的值
+  // endDate.set('hour', endTimeValue.split(':')[0]); // 设置小时
+  // endDate.set('minute', endTimeValue.split(':')[1]); // 设置分钟
+  // endDate.set('second', endTimeValue.split(':')[2]); // 设置秒
 
   var units = document.getElementById('units').value;
   var duration = moment.duration(endDate.diff(startDate));
