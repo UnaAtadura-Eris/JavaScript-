@@ -1,5 +1,3 @@
-
-
 document.getElementById('calculateBtn').addEventListener('click', function () {
   // var moment = require('moment');
   var startDate = moment(document.getElementById('startDate').value+" "+document.getElementById('startTime').value);
@@ -8,16 +6,7 @@ document.getElementById('calculateBtn').addEventListener('click', function () {
   // startDate.set('hour', startTimeValue.split(':')[0]); // 设置小时
   // startDate.set('minute', startTimeValue.split(':')[1]); // 设置分钟
   // startDate.set('second', startTimeValue.split(':')[2]); // 设置秒
-
-
   var endDate = moment(document.getElementById('endDate').value+" "+document.getElementById('endTime').value);
-
-  // var endTimeInput = document.getElementById('endTime'); // 获取输入框元素
-  // var endTimeValue = endTimeInput.value; // 获取输入框的值
-  // endDate.set('hour', endTimeValue.split(':')[0]); // 设置小时
-  // endDate.set('minute', endTimeValue.split(':')[1]); // 设置分钟
-  // endDate.set('second', endTimeValue.split(':')[2]); // 设置秒
-
   var units = document.getElementById('units').value;
   var duration = moment.duration(endDate.diff(startDate));
   var result = '';
@@ -50,10 +39,12 @@ document.getElementById('calculateBtn').addEventListener('click', function () {
     result += seconds + '秒';
   }
   if (units === 'week') {
-    var diff = moment.duration(endDate.diff(startDate)); // 获取两个日期之间的差值，返回一个duration对象
-    var weeks = diff.weeks(); // 获取周数，返回一个整数
-    var days = diff.days() - (diff.weeks() * 7); // 获取天数，返回一个整数，不包括周数的部分
+    // var weeks = moment(endDate).diff(startDate, "weeks", false); // 获取两个日期之间的差值，返回一个duration对象
+    // var weeks = diff.weeks() ; // 获取周数，返回一个整数
+    var days = Math.abs(moment(endDate).diff(startDate, "days", false))%7; // 取余
+    var weeks = Math.floor (Math.abs(moment(endDate).diff(startDate, "days", false)) /7);  取整
     result += weeks + "周" + days + "天"; // 输出 “4 weeks and 2 days”
+    // result += days
   }
   var resultElement = document.getElementById('result');
   resultElement.textContent = result.trim();
