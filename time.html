@@ -9,8 +9,8 @@
 </head>
 
 <body>
-  <div class="container" style="background-color:rgb(245, 248, 250)">
-    <div class="row" style="text-align: center">
+  <div class="container" style="background-color:rgb(245, 248, 250);">
+    <div class="row" style="text-align: center;margin-top: 30px">
       <h1>相对时间计算器</h1>
     </div>
     <div style="display: flex; justify-content: center; align-items: center; align-items: center; gap: 10px; margin-top: 10px;">
@@ -41,12 +41,12 @@
       </select>
     </div>
     <div class="col-md-6 offset-md-3" style="text-align: center">
-      <button id="calculateBtn" class="btn btn-primary" style="margin-top: 20px">计算</button>
+      <button id="calculateBtn" class="btn btn-primary" style="margin-top: 20px;margin-bottom: 20px;">计算</button>
       <div id="result"></div>
     </div>
   </div>
 
-  <script src="./moment.min.js"></script>
+  <script src="./node_modules/moment/min/moment.min.js"></script>
   <!-- <script src="script.js"></script> -->
   <script>
     // 获取当前日期和时间
@@ -65,9 +65,9 @@
     document.getElementById('endTime').value = formattedTime;
   </script>
  
-  <hr size="large">
+  <hr size="large" style="margin-top: 100px;" >
 
-  <div style="justify-content: center; align-items: center;text-align: center;margin-top: 300px;">
+  <div style="justify-content: center; align-items: center;text-align: center;margin-top: 200px;">
     <h1 style="font-weight: bold; font-size: 80px;">地球online累积在线时间</h1>
     <!-- 定义一个显示元素，给它一个 id -->
     <div id="display" style="font-weight: normal; font-size: 50px;"></div>
