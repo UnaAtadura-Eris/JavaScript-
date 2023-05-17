@@ -4,30 +4,28 @@
 <head>
   <meta charset="UTF-8">
   <title>相对时间计算器</title>
-  <!-- <link rel="stylesheet" href="styles.css"> -->
-  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 
 <body>
-  <div class="container" style="background-color:rgb(245, 248, 250);">
-    <div class="row" style="text-align: center;margin-top: 30px">
-      <h1>相对时间计算器</h1>
+  <div class="container">
+    <div class="row">
+      <h1 class="text-center">相对时间计算器</h1>
     </div>
-    <div style="display: flex; justify-content: center; align-items: center; align-items: center; gap: 10px; margin-top: 10px;">
+    <div class="input-group">
       <label for="startDate">起始日期时间：</label>
       <input type="date" id="startDate" name="startDate">
       <label for="startTime"></label>
       <input type="time" id="startTime" name="startTime">
     </div>
-
-
-    <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 10px;">
-        <label for="endDate" >结束日期时间：</label>
-        <input type="date" id="endDate" name="endDate" >
-        <label for="endTime"></label>
-        <input type="time" id="endTime" name="endTime" >
+    <div class="input-group">
+      <label for="endDate">结束日期时间：</label>
+      <input type="date" id="endDate" name="endDate">
+      <label for="endTime"></label>
+      <input type="time" id="endTime" name="endTime">
     </div>
-    <div class="col-md-6 offset-md-3" style="text-align: center;margin-top: 10px;">
+    <div class="input-group">
       <label for="units">输出单位：</label>
       <select id="units">
         <option value="all">全部</option>
@@ -40,39 +38,18 @@
         <option value="week">周</option>
       </select>
     </div>
-    <div class="col-md-6 offset-md-3" style="text-align: center">
-      <button id="calculateBtn" class="btn btn-primary" style="margin-top: 20px;margin-bottom: 20px;">计算</button>
+    <div class="text-center">
+      <button id="calculateBtn" class="btn btn-primary">计算</button>
       <div id="result"></div>
     </div>
   </div>
 
-  <script src="./min/moment.min.js"></script>
-  <!-- <script src="script.js"></script> -->
-  <script>
-    // 获取当前日期和时间
-    var now = moment();
+  <hr class="separator">
 
-    // 获取日期和时间的格式化字符串
-    var formattedDate = now.format('YYYY-MM-DD');
-    var formattedTime = now.format('HH:mm:ss');
-
-    // 设置起始日期和时间的初始值
-    document.getElementById('startDate').value = formattedDate;
-    document.getElementById('startTime').value = formattedTime;
-
-    // 设置结束日期和时间的初始值
-    document.getElementById('endDate').value = formattedDate;
-    document.getElementById('endTime').value = formattedTime;
-  </script>
- 
-  <hr size="large" style="margin-top: 100px;" >
-
-  <div style="justify-content: center; align-items: center;text-align: center;margin-top: 200px;">
-    <h1 style="font-weight: bold; font-size: 80px;">地球online累积在线时间</h1>
-    <!-- 定义一个显示元素，给它一个 id -->
-    <div id="display" style="font-weight: normal; font-size: 50px;"></div>
-    <!-- 引入 JavaScript 代码 如果把函数写在一个文件，那要在html的最后引用-->
-    <!-- <script src="./node_modules/moment/min/moment.min.js"></script> -->
+  <div class="text-center">
+    <h1 class="title">地球online累积在线时间</h1>
+    <div id="display" class="timer"></div>
+    <script src="./node_modules/moment/min/moment.min.js"></script>
     <script src="script.js"></script>
   </div>
 </body>
